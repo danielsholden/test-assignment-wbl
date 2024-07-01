@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function Form(props: Props) {
-  const { handleSubmit, register, formState, watch, reset } = useFormContext<IFormValues>();
+  const { handleSubmit, register, watch, reset } = useFormContext<IFormValues>();
   const email = watch(formField);
   const setSubmitForm = useFormStore(state => state.setSubmitForm);
 
@@ -25,7 +25,7 @@ export default function Form(props: Props) {
       return true;
     }
     return emailRegex.test(email);
-  }, [email, formState.errors]);
+  }, [email]);
 
   const onSubmit = (values: IFormValues): void => {
     console.log("email", values.email);
